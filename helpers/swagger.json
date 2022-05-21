@@ -5,37 +5,52 @@
     "description": "CCPI apis",
     "version": "1.0"
   },
-  "produces": ["application/json"],
+  "produces": [
+    "application/json"
+  ],
   "paths": {
-    "/create-users": {
+    "/user/create-user": {
       "post": {
-        "x-swagger-router-controller": "home",
-        "operationId": "index",
-        "tags": ["/test"],
-        "description": "[Login 123](https://www.google.com)",
-        "parameters": [{
-          "name": "test",
-          "in": "formData",
-          "type": "array",
-          "collectionFormat": "multi",
-          "items": {
-            "type": "integer"
+        "summary": "Create users",
+        "tags": [
+          "Users"
+        ],
+        "responses": {},
+        "operationId": "post-user-create-user",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "../models/User.json"
+            },
+            "x-examples": {
+              "example-1": {
+                "id": "string",
+                "full_name": "string",
+                "address": "string",
+                "role_id": "string",
+                "email": "string",
+                "study_center_id": "string",
+                "programme_id": "string",
+                "regional_center_id": "string",
+                "semester": 0,
+                "subjects": [
+                  "string"
+                ]
+              }
+            }
           }
-        },
-          { "name": "profileId", "in": "formData", "required": true, "type": "string" },
-          { "name": "file", "in": "formData", "type": "file", "required": "true" }],
-        "responses": {}
-      }
-    },
-    "/bar": {
-      "get": {
-        "x-swagger-router-controller": "bar",
-        "operationId": "impossible",
-        "tags": ["/test"],
-        "description": "",
-        "parameters": [],
-        "responses": {}
+        ]
       }
     }
-  }
+  },
+  "schemes": [
+    "http"
+  ],
+  "host": "localhost:3000",
+  "consumes": [
+    "application/json"
+  ],
+  "securityDefinitions": {}
 }
