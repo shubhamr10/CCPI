@@ -1,0 +1,6 @@
+{
+  "mongoURI":"mongodb+srv://shubham10:shubham10@mern.rjita.mongodb.net/ccpi?retryWrites=true&w=majority",
+  "jwtSecret":"my_ignou_secret_token@123",
+  "githubclientId":"dca0dc8e252c6d85cfdb",
+  "githubSecret":"5b631fc4272b8ef0d55e5c97949febdb6c96caba"
+}

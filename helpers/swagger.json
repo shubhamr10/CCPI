@@ -22,22 +22,31 @@
             "in": "body",
             "name": "body",
             "schema": {
-              "$ref": "../models/User.json"
             },
             "x-examples": {
               "example-1": {
-                "id": "string",
-                "full_name": "string",
-                "address": "string",
-                "role_id": "string",
-                "email": "string",
-                "study_center_id": "string",
-                "programme_id": "string",
-                "regional_center_id": "string",
-                "semester": 0,
-                "subjects": [
-                  "string"
-                ]
+                "full_name":"Kumar Shubham Pratik Rauniyar",
+                "address":"Pune, Maharashtra - 411028",
+                "role_id":"62891576d9517e96b47ef86e",
+                "email":"shubhamrauniyar10@gmail.com",
+                "password":"123456",
+                "study_center_id":"6289118398f6e4f1f3732921",
+                "programme_id":"",
+                "regional_center_id":"6289123798f6e4f1f3732927",
+                "semester":"1",
+                "subjects":""
+              },
+              "example-2": {
+                "full_name":"Akshay Nagargoje",
+                "address":"Pune, Maharashtra - 411028",
+                "role_id":"628915b3d9517e96b47ef871",
+                "email":"akshay@gmail.com",
+                "password":"123456",
+                "study_center_id":"",
+                "programme_id":"",
+                "regional_center_id":"",
+                "semester":"",
+                "subjects":""
               }
             }
           }
