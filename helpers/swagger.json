@@ -47,6 +47,18 @@
                 "regional_center_id":"",
                 "semester":"",
                 "subjects":""
+              },
+              "example-3": {
+                "full_name":"Gaurav Shindhe",
+                "address":"Pune, Maharashtra - 411028",
+                "role_id":"628915e6d9517e96b47ef874",
+                "email":"gaurav@gmail.com",
+                "password":"123456",
+                "study_center_id":"6289118398f6e4f1f3732921",
+                "programme_id":"",
+                "regional_center_id":"6289123798f6e4f1f3732927",
+                "semester":"",
+                "subjects":["MCS-031","MCS-032","MCS-043"]
               }
             }
           }
