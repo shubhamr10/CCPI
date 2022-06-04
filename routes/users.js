@@ -4,6 +4,7 @@ const router = express.Router();
 const auth = require('../helpers/auth');
 const {check, validationResult} = require('express-validator');
 const User = require('../models/Users');
+const Role = require('../models/Roles');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
@@ -122,7 +123,7 @@ router.post('/auth',
 * */
 router.get('/auth', auth, async( req, res )=>{
     try{
-        const user = await User.findById(req.user.id).select('-password');
+        let user = await User.findById(req.user.id).select('-password').populate('role_id');
         return res.json(user);
     } catch (e) {
         console.trace(e);

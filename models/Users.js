@@ -11,7 +11,8 @@ const userSchema = new mongoose.Schema({
     },
     role_id: {
         type: String,
-        required: true
+        required: true,
+        ref:'roles'
     },
     email: {
         type: String,
@@ -23,13 +24,16 @@ const userSchema = new mongoose.Schema({
       required:true
     },
     study_center_id: {
-        type: String
+        type: String,
+        ref:'centers'
     },
     programme_id: {
-        type: String
+        type: String,
+        ref:'programmes'
     },
     regional_center_id: {
-        type: String
+        type: String,
+        ref:'centers'
     },
     semester: {
         type: Number

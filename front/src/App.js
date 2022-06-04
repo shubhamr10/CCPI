@@ -9,12 +9,10 @@ import setAuthToken from "./utils/setAuthToken";
 
 if(localStorage.ccpi_token){
     setAuthToken(localStorage.token);
+    store.dispatch(loadUser());
 }
 
 function App() {
-    useEffect(() => {
-        store.dispatch(loadUser())
-    }, [])
   return (
     <Provider store={store}>
         <Router>
