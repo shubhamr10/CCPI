@@ -1,4 +1,4 @@
-import { AUTH_ERROR, LOGIN_FAILED, USER_LOADED, LOGOUT } from "../types";
+import {AUTH_ERROR, LOGIN_FAILED, USER_LOADED, LOGOUT, LOGIN_SUCCESS} from "../types";
 
 const initialState = {
     token: localStorage.getItem('token'),
@@ -10,6 +10,9 @@ const initialState = {
 export default function authReducer(state = initialState, action) {
     const { type, payload } = action;
     switch (type) {
+        case LOGIN_SUCCESS:
+            localStorage.setItem('ccpi_token', payload.token);
+            return { ...state, ...payload, isAuthenticated: true, loading:false };
         case AUTH_ERROR:
         case LOGIN_FAILED:
         case LOGOUT:

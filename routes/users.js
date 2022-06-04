@@ -83,7 +83,7 @@ router.post('/create-users',
 * */
 router.post('/auth',
     check('email', 'Please provide a valid email!').isEmail(),
-    check('password', 'Password is regarding!').exists(),
+    check('password', 'Password is required!').exists(),
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) return res.status(400).json({success: false, errors: errors.array()});

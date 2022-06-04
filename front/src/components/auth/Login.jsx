@@ -1,30 +1,57 @@
-import React, { Fragment, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import BannerImg from '../../assets/Login-banner.jpg';
+import Logo from '../../assets/img/Logo_sml.png';
+import {login} from '../../actions/auth.actions';
 
-const Login = ({ isAuthenticated}) => {
+const Login = ({ isAuthenticated, login}) => {
+    const [state, setState] = useState({
+        email:'',
+        password:''
+    });
+    const onChange = (e) => {
+        setState({
+            ...state,
+            [e.target.name]:e.target.value
+        });
+    }
+    const onSubmitForm = (e) => {
+        e.preventDefault();
+        const formData = {
+            email:state.email,
+            password:state.password
+        };
+        login(formData);
+    }
+    if(isAuthenticated){
+        return <Navigate replace to={'/home'}/>
+    }
   return (
-    <div className='container' style={{height:'100vh'}}>
-        <div className='row  align-items-center my-auto h-100'>
-            <div className="col p-1">
-            <img src={BannerImg} className="img-fluid" alt="..." />
+    <div className='container-fluid'>
+        <div className='row'>
+            <div className='col-sm'>
+                <div className={'col-login-left'}>
+                    <div><img src={Logo} alt="logo-ignou" className="img-fluid"/></div>
+                    <div className={'login-image-banner-text'}>Welcome to CCPI</div>
+                </div>
             </div>
-            <div className="col ps-3">
-                <h1>Welcome to CPI</h1>
-                <form>
-                    <div className="mb-3">
-                        <label htmlFor="exampleInputEmail1" className="form-label">Email address or Enrollment no.</label>
-                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder='Enroll no. or email'/>
-                        <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                        <input type="password" className="form-control" id="exampleInputPassword1" />
-                    </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
-                </form>
+            <div className={'col-sm'}>
+                <div className={'login-form'}>
+                    <form onSubmit={onSubmitForm}>
+                        <div className="mb-3">
+                            <label htmlFor="email" className="form-label">Email</label>
+                            <input type="email" name={'email'} onChange={onChange} value={state.email} id={'email'} aria-describedby={'email-help'} className="form-control" required={true}/>
+                            <div id="email-help" className={'form-text'}>We'll never share your email.</div>
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="password" className="form-label">Password</label>
+                            <input type="password" name={'password'} onChange={onChange} id={'password'} value={state.password} className="form-control"  required={true}/>
+                        </div>
+                        <button type={'submit'} className="btn btn-primary">Login</button> &nbsp;
+                        <button type={'reset'} className="btn btn-light">Reset</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -40,4 +67,4 @@ const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, {})(Login);
+export default connect(mapStateToProps, { login })(Login);
