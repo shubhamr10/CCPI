@@ -9,7 +9,7 @@ const Routing = () => {
   return (
       <section>
           <Routes>
-            <Route exact path='/' element={<Login/>}/>
+              <Route exact path='/' element={<Login/>}/>
               <Route exact path='/home' element={<Home/>}/>
           </Routes>
       </section>
