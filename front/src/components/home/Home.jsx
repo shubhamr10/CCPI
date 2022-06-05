@@ -8,7 +8,15 @@ const Home = ({ isAuthenticated }) => {
     if(!isAuthenticated){
         return <Navigate replace to={'/'}/>
     }
-    return (<div>Home</div>)
+    return (
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col-sm-12">
+
+                </div>
+            </div>
+        </div>
+    )
 };
 
 Home.propTypes = {

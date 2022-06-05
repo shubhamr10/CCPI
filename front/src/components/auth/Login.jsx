@@ -7,8 +7,8 @@ import {login} from '../../actions/auth.actions';
 
 const Login = ({ isAuthenticated, login}) => {
     const [state, setState] = useState({
-        email:'',
-        password:''
+        email:'shubham@gmail.com',
+        password:'123456'
     });
     const onChange = (e) => {
         setState({
@@ -28,7 +28,7 @@ const Login = ({ isAuthenticated, login}) => {
         return <Navigate replace to={'/home'}/>
     }
   return (
-    <div className='container-fluid'>
+    <div className='container-fluid container-full-height'>
         <div className='row'>
             <div className='col-sm'>
                 <div className={'col-login-left'}>

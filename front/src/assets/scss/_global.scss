@@ -20,7 +20,7 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 }
-.container-fluid{
+.container-full-height{
 	height: 100vh;
 	width: 100vw;
 	.row{
@@ -30,4 +30,5 @@ time, mark, audio, video {
 
 button{
 	min-width: vw(100px);
+
 }

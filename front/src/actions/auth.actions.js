@@ -1,6 +1,6 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
-import {AUTH_ERROR, LOGIN_FAILED, LOGIN_SUCCESS, USER_LOADED} from "../types";
+import {AUTH_ERROR, LOGIN_FAILED, LOGIN_SUCCESS, LOGOUT, USER_LOADED} from "../types";
 import {setAlert} from "./alert.actions";
 // axios.defaults.baseURL = 'http://localhost:4000';
 
@@ -50,4 +50,12 @@ export const login = (formData) => async dispatch => {
         })
         console.error('error', e);
     }
+}
+
+/*
+* @description : LOGOUT
+* */
+export const logout = () => dispatch => {
+    dispatch({type: LOGOUT});
+
 }
