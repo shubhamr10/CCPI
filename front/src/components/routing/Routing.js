@@ -6,6 +6,7 @@ import NotFound from "../layout/NotFound";
 
 import PrivateRoute from "./PrivateRoute";
 import Home from "../home/Home";
+import CreateUser from "../users/CreateUser";
 
 const Routing = () => {
   return (
@@ -18,6 +19,11 @@ const Routing = () => {
                       <Home/>
                   </PrivateRoute>
                   }/>
+              <Route exact path='/create-user' element={
+                  <PrivateRoute>
+                      <CreateUser/>
+                  </PrivateRoute>
+              }/>
 
               <Route exact path='/*' element={<NotFound/>}/>
           </Routes>
