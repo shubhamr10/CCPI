@@ -32,7 +32,7 @@ const CreateUser = ({ roles, load_regional_centers, regional_centers }) => {
             <div className="row">
                 <div className="col-sm-12">
                     <div className="create-user-header">
-                        <h1>Create New User</h1>
+                        <h1>Create New News/ Announcements</h1>
                     </div>
                     <div className="create-user-form-container">
                         <form className={'row g-3'}>
@@ -51,17 +51,33 @@ const CreateUser = ({ roles, load_regional_centers, regional_centers }) => {
                             </div>
 
                             <div className="col-sm-3 input-label">
-                                <label htmlFor="validation-user-type" className="form-label">User Type :</label>
+                                <label htmlFor="validation-user-type" className="form-label">Information Type :</label>
                             </div>
                             <div className="col-sm-9">
-                                {
-                                    roles.map( _role => (
-                                        <div key={_role._id} className="form-check">
-                                            <input type="radio" name={'role_id'} id={`validation-role_id-${_role._id}`} className="form-check-input" value={_role._id} checked={_role._id == state.role_id} onChange={onChange} />
-                                            <label htmlFor={`validation-role_id-${_role._id}`} className="form-check-label">{_role.role_name}</label>
-                                        </div>
-                                    ))
-                                }
+                                <div className="form-check">
+                                <input type="radio" name={'role_id'} id={`validation-role_id-1`} className="form-check-input" value={'News'}/>
+                                <label htmlFor={`validation-role_id-${'1'}`} className="form-check-label">{'News'}</label>
+                                </div>
+                                
+                                <div className="form-check">
+                                <input type="radio" name={'role_id'} id={`validation-role_id-1`} className="form-check-input" value={'Annoucements'}/>
+                                <label htmlFor={`validation-role_id-${'1'}`} className="form-check-label">{'Annoucements'}</label>
+                                </div>
+                            </div>
+
+                            <div className="col-sm-3 input-label">
+                                <label htmlFor="validation-user-type" className="form-label">Distribution Type :</label>
+                            </div>
+                            <div className="col-sm-9">
+                                <div className="form-check">
+                                <input type="radio" name={'role_id'} id={`validation-role_id-1`} className="form-check-input" value={'Global'}/>
+                                <label htmlFor={`validation-role_id-${2}`} className="form-check-label">{'Global'}</label>
+                                </div>
+
+                                <div className="form-check">
+                                <input type="radio" name={'role_id'} id={`validation-role_id-1`} className="form-check-input" value={'Programme based'}/>
+                                <label htmlFor={`validation-role_id-${2}`} className="form-check-label">{'Programme based'}</label>
+                                </div>
                             </div>
 
                             <div className="col-sm-3 input-label">
@@ -75,23 +91,14 @@ const CreateUser = ({ roles, load_regional_centers, regional_centers }) => {
                                 <label htmlFor="validation-regional_center_id" className="form-label">Regional Centre :</label>
                             </div>
                             <div className="col-sm-9">
-                                {
-                                    state.role_id && Array.isArray(roles) && roles.map(_role => {
-                                        return (<Fragment key={_role._id}>
+                                
+                                <select name="regional_center_id" id="regional_center_id" className="form-select">
+                                    <option value="">Select Regional Center</option>
+                                    {
+                                        regional_centers.map(_rcs => <option key={_rcs._id} value={_rcs._id}  >{_rcs.center_name}</option>)
+                                    }
+                                </select>
 
-                                                { (_role._id == state.role_id) && (_role.role_name == 'Student' || _role.role_name == 'Counsellor') ? <Fragment>
-                                                    <select name="regional_center_id" id="regional_center_id" className="form-select">
-                                                        <option value="">Select Regional Center</option>
-                                                        {
-                                                            regional_centers.map(_rcs => <option key={_rcs._id} value={_rcs._id}  >{_rcs.center_name}</option>)
-                                                        }
-                                                    </select>
-                                                </Fragment> : null }
-
-
-                                        </Fragment>);
-                                    })
-                                }
                             </div>
 
                             <div className="col-sm-3 input-label">
@@ -99,30 +106,19 @@ const CreateUser = ({ roles, load_regional_centers, regional_centers }) => {
                             </div>
 
                             <div className="col-sm-9">
-                                {
-                                    state.role_id && Array.isArray(roles) && roles.map(_role => {
-                                        return (<Fragment key={_role._id}>
-
-                                                { (_role._id == state.role_id) && (_role.role_name == 'Student' || _role.role_name == 'Counsellor') ? <Fragment>
-                                                    <select name="regional_center_id" id="regional_center_id" className="form-select">
-                                                        <option value="">Select Study Center</option>
-                                                        {
-                                                            regional_centers.map(_rcs => <option key={_rcs._id} value={_rcs._id}  >{_rcs.center_name}</option>)
-                                                        }
-                                                    </select>
-                                                </Fragment> : null }
-
-
-                                        </Fragment>);
-                                    })
-                                }
+                            <select name="regional_center_id" id="regional_center_id" className="form-select">
+                                    <option value="">Select Study Center</option>
+                                    {
+                                        regional_centers.map(_rcs => <option key={_rcs._id} value={_rcs._id}  >{_rcs.center_name}</option>)
+                                    }
+                                </select>
                             </div>
 
                             <div className="col-sm-3 input-label">
-                                <label htmlFor="validation-email" className="form-label">Subjects :</label>
+                                <label htmlFor="validation-email" className="form-label">Message :</label>
                             </div>
                             <div className="col-sm-9">
-                                <input type="text" name={'subjects'} onChange={onChange} className="form-control" value={state.subjects} id={'validation-subjects'}/>
+                                <textarea type="text" name={'subjects'} onChange={onChange} className="form-control" value={state.subjects} id={'validation-subjects'}/>
                             </div>
 
                             <div class="col-sm-3"></div>
@@ -130,23 +126,6 @@ const CreateUser = ({ roles, load_regional_centers, regional_centers }) => {
                             <button class="btn btn-primary" type="submit">Create</button> &nbsp;
                                 <button class="btn btn-primary" type="submit">Reset</button>
                                 </div>
-
-{/*                            // if student
-                            // study center
-                            // regional center
-                            // programme code
-                            // semester
-                            // if counsellor
-                            // study center
-                            // regional center
-                            // subjects*/}
-                            {/*{*/}
-                            {/*    state.role_id && roles[state.role_id].role_name == 'Student' || roles[state.role_id].role_name == 'Counsellor' ? <Fragment>*/}
-                            {/*        <div className="col-sm-3 input-label">*/}
-                            {/*            <label htmlFor="" className="form-label"></label>*/}
-                            {/*        </div>*/}
-                            {/*    </Fragment> : null*/}
-                            {/*}*/}
 
 
                         </form>

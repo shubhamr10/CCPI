@@ -7,6 +7,7 @@ import NotFound from "../layout/NotFound";
 import PrivateRoute from "./PrivateRoute";
 import Home from "../home/Home";
 import CreateUser from "../users/CreateUser";
+import CreateNews from '../news_annoucement/NewsAnnouncement';
 
 const Routing = () => {
   return (
@@ -19,7 +20,18 @@ const Routing = () => {
                       <Home/>
                   </PrivateRoute>
                   }/>
-              <Route exact path='/create-user' element={
+              <Route exact path='/news' element={
+                  <PrivateRoute>
+                      <CreateNews/>
+                  </PrivateRoute>
+              }/>
+
+            <Route exact path='/announcements' element={
+                  <PrivateRoute>
+                      <CreateNews/>
+                  </PrivateRoute>
+              }/>
+                            <Route exact path='/create-user' element={
                   <PrivateRoute>
                       <CreateUser/>
                   </PrivateRoute>
