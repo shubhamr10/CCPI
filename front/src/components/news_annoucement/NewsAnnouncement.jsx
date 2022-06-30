@@ -36,19 +36,7 @@ const CreateUser = ({ roles, load_regional_centers, regional_centers }) => {
                     </div>
                     <div className="create-user-form-container">
                         <form className={'row g-3'}>
-                            <div className="col-sm-3 input-label">
-                                <label htmlFor="validation-full-name" className="form-label">Full name :</label>
-                            </div>
-                            <div className="col-sm-9">
-                                <input type="text" name={'full_name'} onChange={onChange} className="form-control" value={state.full_name} id={'validation-full-name'}/>
-                            </div>
 
-                            <div className="col-sm-3 input-label">
-                                <label htmlFor="validation-address" className="form-label">Address :</label>
-                            </div>
-                            <div className="col-sm-9">
-                                <input type="text" name={'address'} onChange={onChange} className="form-control" value={state.address} id={'validation-address'}/>
-                            </div>
 
                             <div className="col-sm-3 input-label">
                                 <label htmlFor="validation-user-type" className="form-label">Information Type :</label>
