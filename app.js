@@ -10,9 +10,11 @@ const swaggerDocument = require('./helpers/swagger.json');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const centersRouter = require('./routes/studyCenters');
+const centersRouter = require('./routes/centers');
 const programmesRouter = require('./routes/programmes');
 const rolesRouter = require('./routes/roles');
+const informationRouter = require('./routes/announcement_news');
+const messageRouter = require('./routes/messages');
 
 const app = express();
 
@@ -38,6 +40,8 @@ app.use('/users', usersRouter);
 app.use('/center', centersRouter);
 app.use('/programme', programmesRouter);
 app.use('/role', rolesRouter);
+app.use('/information', informationRouter);
+app.use('/message', messageRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

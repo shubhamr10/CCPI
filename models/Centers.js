@@ -20,6 +20,9 @@ const centerSchema = new mongoose.Schema({
         required: true,
         enum: ['RC', 'SC']
     },
+    rc_code: {
+      type:String // only required for study centers
+    },
     address: {
         type: String,
         required: true

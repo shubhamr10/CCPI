@@ -1,6 +1,6 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
-import {AUTH_ERROR, LOGIN_FAILED, LOGIN_SUCCESS, LOGOUT, USER_LOADED} from "../types";
+import {AUTH_ERROR, GET_ROLES, LOGIN_FAILED, LOGIN_SUCCESS, LOGOUT, USER_LOADED} from "../types";
 import {setAlert} from "./alert.actions";
 // axios.defaults.baseURL = 'http://localhost:4000';
 
@@ -18,6 +18,7 @@ export const loadUser = () => async dispatch => {
                 type:USER_LOADED,
                 payload : data
             });
+            dispatch(get_roles());
         }
     } catch (e) {
         console.error('error', e);
@@ -57,5 +58,22 @@ export const login = (formData) => async dispatch => {
 * */
 export const logout = () => dispatch => {
     dispatch({type: LOGOUT});
+
+}
+
+/*
+* @description : GET ALL ROLES
+* */
+export const get_roles = () => async dispatch => {
+    try{
+        let { data } = await axios.get('/role/roles');
+        dispatch({
+            type:GET_ROLES,
+            payload:data.data
+        });
+    } catch (e) {
+        console.log(e);
+        dispatch(setAlert('Error while fetching roles', 'danger'))
+    }
 
 }

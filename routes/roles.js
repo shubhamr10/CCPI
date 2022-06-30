@@ -34,4 +34,19 @@ router.post('/create-role',
 
     });
 
+/*
+* @route - GET /roles
+* @desc = API to get roles
+* @access = PROTECTED
+* */
+router.get('/roles', async (req, res, next) => {
+    try{
+        const allRoles = await  Roles.find({});
+        return res.json({success: true, data: allRoles});
+    } catch (e) {
+        console.log(e);
+        return res.status(500).json({success: false, errors: e});
+    }
+})
+
 module.exports = router;

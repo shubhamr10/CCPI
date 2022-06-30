@@ -37,4 +37,20 @@ router.post('/create-center',
 
     });
 
+
+/*
+* @route - GET /regional-centers
+* @desc = API TO FETCH ALL THE REGIONAL CENTERS
+* @access = protected
+* */
+
+router.get('/regional-centers', async( req, res, next) => {
+    try{
+        const regional_centers = await Centers.find({center_type:'RC'});
+        return res.json({ success : true, data: regional_centers });
+    } catch (e) {
+        return res.status(500).json({success: false, errors: e})
+    }
+})
+
 module.exports = router;
